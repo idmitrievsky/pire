@@ -74,8 +74,6 @@ divider(10, 0) # => "Cannot divide by 0.\nExecuting a finally clause.\n"
 
 ### Ignoring handlers
 
-### Multiple Exception Classes
-
 ```python
 from pire.core import with_handler, ignore_handler, supervised
 
@@ -99,7 +97,7 @@ divider(10, 0) # => "Cannot divide by 0 or operate on None values."
 divider(10, None) # => "Cannot divide by 0 or operate on None values."
 
 another_divider(10, None) # => "Cannot divide by 0 or operate on None values."
-another_divider(10, None) # An exception is raised. 
+another_divider(10, 0) # An exception is raised. 
 ```
 
 ## Usage: Erlang Style with supervise
