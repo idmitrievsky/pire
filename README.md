@@ -3,7 +3,7 @@
 Decomplect error logic with Erlang-style supervisor error handling for Python. This is a clone of a Clojure library called [dire](https://github.com/MichaelDrogalis/dire).
 
 Ships in two flavors:
-* The drop-in style, using functions ending in '!'
+* The drop-in style, using a decorator
 * Erlang-style inspired by the work of Joe Armstrong using a supervisor
 
 ## Installation
