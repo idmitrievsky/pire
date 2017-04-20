@@ -42,7 +42,7 @@ def _pire_meta(obj):
     return getattr(obj, _pire_attr)
 
 
-def is_iterable(obj):
+def _is_iterable(obj):
     try:
         iter(obj)
     except TypeError:
@@ -64,7 +64,7 @@ def excepting(selector, handler_fn):
     def decorator(task):
         task_meta = _pire_meta(task)
         handlers_by_selector = task_meta['handlers_by_selector']
-        if is_iterable(selector):
+        if _is_iterable(selector):
             for s in selector:
                 handlers_by_selector[s] = handler_fn
         else:
@@ -81,7 +81,7 @@ def skipping(selector):
 
     def decorator(task):
         task_meta = _pire_meta(task)
-        if is_iterable(selector):
+        if _is_iterable(selector):
             task_meta['raising_classes'].update(selector)
         else:
             task_meta['raising_classes'].add(selector)
