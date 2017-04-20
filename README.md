@@ -4,7 +4,7 @@ Pire tries to decomplect error handling and logic. It provides decorators to mod
 
 When decorated callable is called by itself the behaviour doesn't change, but if it's called with the help of a special supervising function (or is additionally decorated) then pire does its thing.
 
-This is almost a clone of a Clojure library called [dire](https://github.com/MichaelDrogalis/dire).
+This is a recreation of a Clojure library called [dire](https://github.com/MichaelDrogalis/dire).
 
 ## Installation
 ```
