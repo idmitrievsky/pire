@@ -41,7 +41,7 @@ def general_handler(e, *args):
     print('Cannot divide by 0 or operate on None values.')
 
 @supervised
-@excepting((ZeroDivisionError, TypeError), general_handler)
+@excepting([ZeroDivisionError, TypeError], general_handler)
 def divider(a, b):
     return a / b
 
@@ -52,7 +52,7 @@ divider(10, None) # => "Cannot divide by 0 or operate on None values."
 ### Try/Catch/Finally Semantics
 
 ```python
-from pire import excepting, with_finally, supervised
+from pire import excepting, finally_call, supervised
 
 # 'e' is the exception object, 'args' are the original arguments to the task.
 def zero_div_handler(e, *args):
@@ -65,7 +65,7 @@ def finally_clause(e, *args):
 # For a task, specify an exception that can be raised and a function to deal with it.
 @supervised
 @excepting(ZeroDivisionError, zero_div_handler)
-@with_finally(finally_clause)
+@finally_call(finally_clause)
 def divider(a, b):
     return a / b
 
