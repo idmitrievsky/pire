@@ -3,13 +3,14 @@
 from enum import Enum
 from functools import wraps
 from inspect import isclass
+from collections import OrderedDict
 
 _pire_attr = '_pire_meta'
 
 
 def _get_pire_meta(obj):
     if not hasattr(obj, _pire_attr):
-        setattr(obj, _pire_attr, {'error_handlers': {},
+        setattr(obj, _pire_attr, {'error_handlers': OrderedDict(),
                                   'ignored_handlers': set()})
 
     return getattr(obj, _pire_attr)
