@@ -9,9 +9,7 @@ but if it's called with the help of a special supervising function
 (or is additionally decorated) then `pire` does its thing.
 """
 
-from enum import Enum
 from functools import wraps
-from inspect import isclass
 
 """
 Pire stores its meta info as an object attribute.
@@ -103,44 +101,15 @@ def finally_call(finally_handler):
     return decorator
 
 
-class _SelectorType(Enum):
-    """
-    The `unknown` selector doesn't match any thrown object.
-    """
-    exc_class = 1
-    unknown = 2
-
-
-def _selector_type(selector):
-    """
-    `issubclass` requires its arguments to be classes, so this is checked first. 
-    """
-    if isclass(selector) and issubclass(selector, Exception):
-        return _SelectorType.exc_class
-    else:
-        return _SelectorType.unknown
-
-
-def _does_selector_match(selector, thrown_obj):
-    """
-    Every selector type requires its own check.
-    """
-    s_type = _selector_type(selector)
-
-    if s_type == _SelectorType.exc_class:
-        return isinstance(thrown_obj, selector)
-    elif s_type == _SelectorType.unknown:
-        return False
-
-    return False
-
-
 def _matching_handler(handlers_by_selector, thrown_obj):
     """
     Matching `thrown_obj` with a handler is straightforward.
+    `thrown_obj` is always a throwable thing, hence no check
+    that selectors are subclasses of `Exception` needed.
+    If nothing matches then so be it.
     """
     for selector, handler in handlers_by_selector.items():
-        if _does_selector_match(selector, thrown_obj):
+        if isinstance(thrown_obj, selector):
             return handler
 
 
