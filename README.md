@@ -1,17 +1,17 @@
 # Pire
 
-Decomplect error logic with Erlang-style supervisor error handling for Python. This is a clone of a Clojure library called [dire](https://github.com/MichaelDrogalis/dire).
+Pire tries to decomplect error handling and logic. It provides decorators to modify callable objects by adding meta information (meta info) to them as a special attribute.
 
-Ships in two flavors:
-* The drop-in style, using a decorator
-* Erlang-style inspired by the work of Joe Armstrong using a supervisor
+When decorated callable is called by itself the behaviour doesn't change, but if it's called with the help of a special supervising function (or is additionally decorated) then pire does its thing.
+
+This is almost a clone of a Clojure library called [dire](https://github.com/MichaelDrogalis/dire).
 
 ## Installation
 ```
 pip install pire
 ```
 
-## Usage: Drop-in Flavor
+## Drop-in Usage
 
 ### Simple Example
 
@@ -100,7 +100,7 @@ another_divider(10, None) # => "Cannot divide by 0 or operate on None values."
 another_divider(10, 0) # An exception is raised. 
 ```
 
-## Usage: Erlang Style with supervise
+## Erlang Style Usage (with supervise)
 
 ### Simple Example
 
