@@ -155,7 +155,8 @@ def _apply_handler(task_meta, thrown_obj, *args, **kwargs):
     should be raised after all.
     """
     handler = _matching_handler(task_meta['handlers_by_selector'], thrown_obj)
-    registered_and_not_skipped = handler and not any(isinstance(thrown_obj, i) for i in task_meta['raising_classes'])
+    handler_skipped = any(isinstance(thrown_obj, i) for i in task_meta['raising_classes'])
+    registered_and_not_skipped = handler and not handler_skipped
     if registered_and_not_skipped:
         handler(thrown_obj, *args, **kwargs)
     return registered_and_not_skipped
