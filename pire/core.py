@@ -12,7 +12,6 @@ but if it's called with the help of a special supervising function
 from enum import Enum
 from functools import wraps
 from inspect import isclass
-from collections import OrderedDict
 
 """
 Pire stores its meta info as an object attribute.
