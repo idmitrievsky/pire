@@ -1,8 +1,8 @@
 # Pire
 
-Pire tries to decomplect error handling and logic. It provides decorators to modify callable objects by adding meta information (meta info) to them as a special attribute.
+Pire tries to decomplect error handling and logic. It provides decorators to modify callable objects by adding meta information to them as a special attribute.
 
-When decorated callable is called by itself the behaviour doesn't change, but if it's called with the help of a special supervising function (or is additionally decorated) then pire does its thing.
+When a decorated callable is called by itself it behaves as usual, but if it's called with the help of a special supervising function (or is additionally decorated) then `pire` does its thing.
 
 This is a recreation of a Clojure library called [dire](https://github.com/MichaelDrogalis/dire).
 
@@ -97,7 +97,7 @@ divider(10, None) # => "Cannot divide by 0 or operate on None values."
 divider(10, 0) # => "Cannot divide by 0 or operate on None values."
 
 another_divider(10, None) # => "Cannot divide by 0 or operate on None values."
-another_divider(10, 0) # An exception is raised. 
+another_divider(10, 0) # An exception is raised.
 ```
 
 ## Erlang Style Usage (with supervise)
